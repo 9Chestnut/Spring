@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @Date: 2022年09月02日 00:04
  * @Description:
  */
-@ConfigurationProperties(prefix = "java")
+//@ConfigurationProperties(prefix = "java")
 public class Bean4 {
 
     private String home;
