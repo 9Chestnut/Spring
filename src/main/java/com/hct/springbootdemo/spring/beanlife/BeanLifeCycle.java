@@ -1,8 +1,14 @@
 package com.hct.springbootdemo.spring.beanlife;
 
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.beans.factory.support.DefaultSingletonBeanRegistry;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+
+import java.lang.reflect.Field;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * @author: 9Chestnut
@@ -12,9 +18,14 @@ import org.springframework.context.ConfigurableApplicationContext;
  */
 @SpringBootApplication
 public class BeanLifeCycle {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         ConfigurableApplicationContext context = SpringApplication.run(BeanLifeCycle.class, args);
-        // 为了测试销毁
+        ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
+
+        System.out.println(context.getMessage("hi", null, Locale.CHINA));
+        System.out.println(context.getMessage("hi", null, Locale.ENGLISH));
+        System.out.println(context.getMessage("hi", null, Locale.JAPANESE));
+
         context.close();
     }
 }
